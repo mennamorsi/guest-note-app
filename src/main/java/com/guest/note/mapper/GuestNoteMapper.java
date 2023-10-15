@@ -11,5 +11,6 @@ public interface GuestNoteMapper {
     @Mapping(source ="type.id", target = "typeId")
     public abstract GuestNoteDTO guestNoteEntityToGuestNoteDTO(GuestNoteEntity guestNote);
 
+    @Mapping(target = "deleted" , constant = "false")
     public abstract GuestNoteEntity guestNoteDTOtoGuestNoteEntity(GuestNoteDTO guestNote);
 }

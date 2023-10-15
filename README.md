@@ -32,8 +32,9 @@ We have 3 Endpoints:
 - An endpoint to send a note to one or multiple users with specific type - but this type should be enabled
 - An endpoint to list user's timeline notes in the last 30 days and could be filtered by one or more type with lazy loading pagination
 - An endpoint to to delete (soft delete) one or more of user's received notes
+- Also we have a scheduled cron job to send to all Users a notification every day with their latest notes states if they activate this feature.
 
- > Send a note to one or multiple users
+ > Send a note to one or multiple users (Success Scenairo)
 
        Request: POST http://localhost:8080/api/guestNote
        Request body:{
@@ -71,7 +72,7 @@ We have 3 Endpoints:
             }
         ]
 
-> List user's timeline notes
+> List user's timeline notes  (Success Scenairo)
 
     Request: GET http://localhost:8080/api/guestNotes/1?size=5&page=0&noteTypes=1,2
        Response body:[
@@ -85,7 +86,25 @@ We have 3 Endpoints:
             }
         ]
 
-> Delete (soft delete) one or more of user's received notes
+> Delete (soft delete) one or more of user's received notes  (Success Scenairo)
 
     Request: Delete http://localhost:8080/api/guestNotes/1,2
        Response body:[list of undeleted ids]
+
+> Schema
+
+We have 3 Entites:
+
+| Guest Note  | Note Type | Note Type
+| ------------- | ------------- | -------------
+| id | id | id
+| title | name | name
+| message body  | enabled  | profile picture link
+| type  |   | notification enabled
+| user  |   | 
+| attached files  |   | 
+| deleted  |   | 
+| creation date  |   | 
+
+
+
